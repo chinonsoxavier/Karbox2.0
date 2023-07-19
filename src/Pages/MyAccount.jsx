@@ -1,0 +1,72 @@
+import styled from "styled-components";
+import { useState } from "react";
+import * as Components from '../Components/Client/Components';
+const Container = styled.div`
+   width:100%;
+   background: #f6f5f7;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   font-family: "Montserrat", sans-serif;
+   height: 100vh;
+   margin: -20px 0 50px;
+`
+
+
+ const Myaccount = () => {
+    const [signIn, toggle] = useState(true);
+     return(
+        <Container>
+         <Components.Container>
+             <Components.SignUpContainer signinIn={signIn}>
+                 <Components.Form>
+                     <Components.Title>Create Account</Components.Title>
+                     <Components.Input type='text' placeholder='Name' />
+                     <Components.Input type='email' placeholder='Email' />
+                     <Components.Input type='password' placeholder='Password' />
+                     <Components.Button>Sign Up</Components.Button>
+                 </Components.Form>
+             </Components.SignUpContainer>
+
+             <Components.SignInContainer signinIn={signIn}>
+                  <Components.Form>
+                      <Components.Title>Sign in</Components.Title>
+                      <Components.Input type='email' placeholder='Email' />
+                      <Components.Input type='password' placeholder='Password' />
+                      <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
+                      <Components.Button>Sigin In</Components.Button>
+                  </Components.Form>
+             </Components.SignInContainer>
+
+             <Components.OverlayContainer signinIn={signIn}>
+                 <Components.Overlay signinIn={signIn}>
+
+                 <Components.LeftOverlayPanel signinIn={signIn}>
+                     <Components.Title>Welcome Back!</Components.Title>
+                     <Components.Paragraph>
+                         To keep connected with us please login with your personal info
+                     </Components.Paragraph>
+                     <Components.GhostButton onClick={() => toggle(true)}>
+                         Sign In
+                     </Components.GhostButton>
+                     </Components.LeftOverlayPanel>
+
+                     <Components.RightOverlayPanel signinIn={signIn}>
+                       <Components.Title>Hello, Friend!</Components.Title>
+                       <Components.Paragraph>
+                           Enter Your personal details and start journey with us
+                       </Components.Paragraph>
+                           <Components.GhostButton onClick={() => toggle(false)}>
+                               Sigin Up
+                           </Components.GhostButton> 
+                     </Components.RightOverlayPanel>
+ 
+                 </Components.Overlay>
+             </Components.OverlayContainer>
+
+         </Components.Container>
+          </Container>
+     )
+}
+export default Myaccount
