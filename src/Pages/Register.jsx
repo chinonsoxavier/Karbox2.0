@@ -110,7 +110,7 @@ const Register = () => {
            For further support you may visit our help center or contact or customer service team  <b>PRIVACY POLICY</b>
           </Agreement>
           {/* <Button>Sign Up as Seller</Button> */}
-          <Text className="flex aic jcc" >Already have an account ?  <Link to='./log-in' className="" style={{color:'purple',fontSize:'13px',fontWeight:500}} >Log in</Link> </Text>
+          <Text className="flex aic jcc" >Already have an account ?  <Link to='/log-in' className="" style={{color:'purple',fontSize:'13px',fontWeight:500}} >Log in</Link> </Text>
         </Form>
       </Wrapper>
     </Container>
