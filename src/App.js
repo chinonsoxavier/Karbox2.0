@@ -20,7 +20,10 @@ import SearchPage from './Pages/SearchPage'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import { UserContext } from "./Components/UseContext/Context";
-const Container = styled.div``;
+const Container = styled.div`
+width:100vw;
+overflow-x:hidden;
+`;
 const Wrapper = styled.div``;
 
 function App() {
@@ -52,7 +55,6 @@ useEffect(() => {
   var value = { type: "", brands: "", search: "" };
   const [searchQuery,setSearchQuery]=useState('')
   return (
-    <UserContext.Provider value={value}>
       <Container className="App">
         <Wrapper>
           {show && <Link id="Link" />}
@@ -187,7 +189,6 @@ useEffect(() => {
           </BrowserRouter>
         </Wrapper>
       </Container>
-    </UserContext.Provider>
   );
 }
 

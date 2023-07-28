@@ -1,7 +1,6 @@
 import { InfoOutlined } from "@mui/icons-material";
 import {
   Box,
-  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -18,48 +17,6 @@ const Container = styled.div`
   background: rgb(240, 235, 248);
   //  padding-bottom:60px;
   padding-top: 10px;
-`;
-const Wrapper = styled.div``;
-const Header = styled.div`
-  padding: 20px 20px;
-`;
-const HeaderText = styled.div`
-  color: black;
-  font-size: 22px;
-  font-weight: 400;
-`;
-
-const InputWrapper = styled.div`
-  padding: 0 20px;
-`;
-const InputCon = styled.div`
-  margin: 8px 0;
-`;
-const Input = styled.input`
-  border: 1px solid grey;
-  outline: none;
-  margin: 8px 0;
-  &:focus {
-    border: orangered;
-  }
-`;
-// const InputLabel = styled.span`
-//    font-weight:${props=>props.fw==='light' ? '' : 500}
-// `
-const InputLabelText = styled.span`
-  font-size: 16px;
-  margin: 6px 0;
-`;
-const InputLabelSml = styled.span`
-  font-size: 12px;
-`;
-
-// const Select = styled.select`
-//    outline:none;
-// `
-const Option = styled.option``;
-const ButtonCon = styled.div`
-  margin-top: 50px;
 `;
 
 const DoStepWrapper = styled.div`

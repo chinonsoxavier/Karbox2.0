@@ -18,6 +18,7 @@ import {
 import Footer from "../Components/Home/Footer";
 import {
   CustomerBreakpoint,
+  Laptop,
   lmobile,
   ltablet,
   metablet,
@@ -28,17 +29,22 @@ import {
 import { Checkbox, FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Container = styled.div`
-  background-color: black;
-  padding: 0 14vh;
-  position:relative;
-  ${mobile({ padding: "0 4vh" })};
-  ${ltablet({ padding: "0 3vh" })};
-`;
+const Container = styled.div``;
 const Wrapper = styled.div`
-  box-sizing: border-box;
+  height: 100%;
+`;
 
-  pposition: relative;
+const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+  background: black;
+  padding: 0 14vh;
+  ${tablet({ padding: "0 4vh" })}
+  ${Laptop({ padding: "0 4vh" })}
+    ${mobile({ padding: "0 4vh" })}
+    box-sizing:border-box;
 `;
 const HeaderCon = styled.div`
   position: sticky;
@@ -47,29 +53,37 @@ const HeaderCon = styled.div`
   width: 100%;
   // background:black;
   // padding: 0 14vh;
-  box-sizing:border-box;
+  box-sizing: border-box;
 `;
 const MobileHeaderCon = styled.div`
+  // z-index: 200;
+  position: sticky;
   top: 0;
-  z-index: 200;
+`;
+
+const BackgroundCon = styled.div`
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
 `;
 
 const SortsCon = styled.div`
-  padding: 23px 10px;
+  padding: 0 10px;
+  padding-top: 15px;
   // margin: 10px 0;
   box-sizing: border-box;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
   position: sticky;
   top: 0;
-  width:100%;
-  ${metablet({flexDirection:'column'})}
-  ${mmobile({paddind:'11px 3px'})}
+  width: 100%;
+  ${metablet({ flexDirection: "column" })}
+  ${mmobile({ padding: "10px 3px" })}
 `;
 const SortsLeft = styled.div`
   flex: 3;
   // min-width:200px;
-  width:100%;
+  width: 100%;
 `;
 const SortsLeftIcon = styled.div`
   flex: 1;
@@ -89,12 +103,12 @@ const SortsInput = styled.input`
   padding: 11px 0;
   flex: 1;
   background: transparent;
-  ${mmobile({ padding: "5px 0" })};
+  ${mmobile({ padding: "8px 0" })};
 
   &::placeholder {
     font-weight: 600;
     font-size: 18px;
-    ${mmobile({ fontSize:'10px' })}
+    ${mmobile({ fontSize: "10px" })}
   }
 `;
 const SortsLeftButton = styled.button`
@@ -104,95 +118,105 @@ const SortsLeftButton = styled.button`
   box-sizing: border-box;
   padding: 11px;
   height: 100%;
-  margin:0 15px;
-  ${mmobile({fontSize:'11px'})}
-
-  ${mmobile({padding:'5px'})}
+  margin: 0 15px;
+  ${mmobile({ fontSize: "12px", padding: "8px" })}
 `;
 const SortsRight = styled.div`
   flex: 2;
   width: 100%;
-  justify-content:space-evenly;
-  margin-top:10px ;
-  ${CustomerBreakpoint({justifyContent:'center',margin:'10px 0'})}
+  margin-top: 2px;
+  justify-content: space-around;
+  ${CustomerBreakpoint({
+    marginTop: "5px",
+    overflowX: "scroll",
+  })};
+  ${metablet({
+    justifyContent: "center",
+    margin:'8px 0'
+  })}
 `;
 const SortsRightSelect = styled.div`
   padding: 11px 10px;
   border-radius: 7px;
   border: 1px solid rgb(233, 231, 231);
   margin: 0 5px;
-  ${CustomerBreakpoint({ padding: "6px 4px", fontSize: "12px" })};
-  ${mmobile({padding:'2px 1px',margin:'0 2px'})}
+  max-height:10px;
+  ${CustomerBreakpoint({ padding: "6px 9px", fontSize: "11px" })};
 `;
-const SortsRightSelectText = styled.div``;
+const SortsRightSelectText = styled.span`
+  white-space: nowrap;
+`;
 const SortsRightSelectIcon = styled.div`
   margin-left: 5px;
+  ${CustomerBreakpoint({ marginLeft: 0 })};
 `;
-
 
 const Filter = styled.div`
   padding: 11px 10px;
   border-radius: 7px;
+  max-height: 10px;
   border: 1px solid rgb(233, 231, 231);
-  ${CustomerBreakpoint({
-    padding: "9px 7px",
-    fontSize: "12px",
-    margin: "0 2px",
-  })};
-  ${mmobile({ padding: "4px 1px", margin: "0 2px" })}
+  ${CustomerBreakpoint({ padding: "6px 9px", fontSize: "11px" })};
 `;
 const FilterText = styled.span``;
 
 const FiltersWrapper = styled.div`
   position: relative;
-  top:100px;
-  z-index:100;
+  top: 0;
+  z-index: 100;
+  background: blue;
 `;
 const FiltersCon = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding: 15px;
+  // padding: 15px;
   z-index: 2;
   top: 0;
 `;
 const SortCon = styled.div`
-  height: 100%;
-   position:relative;
-  bottom:100px;
-  width:100%;
+  // height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  right: 0;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 `;
 const SortWrapper = styled.div`
   background: white;
- width:100%;
+  width: 100%;
   box-sizing: border-box;
 `;
 const SortsTextCon = styled.div`
   padding: 6px 16px;
 
-  &:hover{
-    background:whitesmoke;
+  &:hover {
+    background: whitesmoke;
   }
 `;
 const SortsText = styled.span`
   ${CustomerBreakpoint({
-    fontSize: "14px",
+    fontSize: "11px",
   })};
 `;
 const BrandsWrapper = styled.div`
   // position: relative;
-   position:relative;
-  bottom:100px;
+  //  position:fixed;
+  // top:0;
+  width: 100%;
+  height: ${(props) => props.MobileEnabled ? '100vh' : '80vh'};
 `;
 const BrandsCon = styled.div`
-  width: 350px;
   background: white;
   height: 470px;
+  height: 100vh;
   box-sizing: border-box;
   padding: 0 12px;
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   position: relative;
   overflow-x: scroll;
+  width: 100%;
 `;
 
 const BrandsAlphCon = styled.div`
@@ -205,12 +229,15 @@ const BrandsAlph = styled.div`
   margin: 0;
   cursor: pointer;
 `;
-const BrandsAlphText = styled.div`
+const BrandsAlphText = styled.p`
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
+  line-height: 15px;
 `;
 const BrandsHeader = styled.div``;
-const BrandsHeaderTextCon = styled.div``;
+const BrandsHeaderTextCon = styled.div`
+  padding: 10px 0;
+`;
 const BrandsHeaderText = styled.span`
   font-weight: 500;
   ${CustomerBreakpoint({
@@ -220,6 +247,9 @@ const BrandsHeaderText = styled.span`
 const BrandsHeaderIcon = styled.div``;
 const BrandsTrendCon = styled.div`
   margin-bottom: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 const BrandsTrendConsHeader = styled.div`
   padding: 10px 0;
@@ -227,16 +257,19 @@ const BrandsTrendConsHeader = styled.div`
   font-weight: 600;
 `;
 const BrandsTrendConHeaderTextCon = styled.span`
+  font-weight: 300;
   ${CustomerBreakpoint({
-    fontSize: "17px",
+    fontSize: "15px",
   })};
 `;
 const BrandsTrend = styled.div`
-  min-width: 80px;
-  margin: 5px 0;
+  min-width: 50px;
+  // width:80px;
+  // margin: 5px 0;
+  // flex:1;
 `;
 const BrandsTrendImg = styled.img`
-  max-width: 80%;
+  width: 100%;
 `;
 const BrandsTrendText = styled.span`
   font-size: 13px;
@@ -266,17 +299,24 @@ const BrandsNameText = styled.span`
 
 const PriceCon = styled.div`
   width: 100%;
-   position:relative;
-  bottom:100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  background: blue;
+  max-width: 430px;
 `;
 const PriceWrapper = styled.div`
   width: 100%;
   background: white;
-  max-width: 430px;
   padding-bottom: 20px;
+  box-sizing: border-box;
+  ${lmobile({ padding: "12px 15px" })}
 `;
 const PricesWrapper = styled.div`
- ${lmobile({display:'none'})}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
 `;
 const Prices = styled.div`
   display: flex;
@@ -284,36 +324,42 @@ const Prices = styled.div`
   justify-content: center;
   background: #eee;
   padding: 6px 9px;
-  width: 170px;
-  margin: 6px;
+  // width: 170px;
+  // margin: 6px;
   border-radius: 6px;
 `;
 const PricesText = styled.span`
-  font-size: 12px;
+  font-size: 9px;
+  white-space: nowrap;
   ${CustomerBreakpoint({
-    fontSize: "14px",
+    fontSize: "10px",
   })};
 `;
 const PriceCustom = styled.div`
   padding: 20px;
   box-sizing: border-box;
-  ${lmobile({padding:'0'})}
+  ${lmobile({ padding: "0" })}
 `;
 const PriceCustomHeader = styled.div`
-  margin: 7px 0;
-  ${lmobile({margin:'0'})}
+  margin: 10px 0;
+  ${lmobile({ marginBottom: "6px " })}
 `;
-const PriceCustomHeaderText = styled.span``;
+const PriceCustomHeaderText = styled.span`
+  font-size: 13px;
+`;
 const PriceCustomInputWrapper = styled.div`
-${lmobile({flexDirection:'column',alignItems:'flex-start'})}
+  ${lmobile({ flexDirection: "row", alignItems: "flex-start" })}
 `;
-const PriceCustomInputCon = styled.div``;
+const PriceCustomInputCon = styled.div`
+  flex: 1;
+`;
 const PriceCustomInput = styled.input`
   border: none;
   padding: 8px 4px;
   box-sizing: border-box;
   background: #eee;
   outline: none;
+  width: 100%;
 
   &::placeholder {
     font-size: 12px;
@@ -324,7 +370,8 @@ const PriceCustomText = styled.div`
   margin: 10px;
 `;
 const PriceCustomButtonCon = styled.div`
-  padding: 0 20px;
+  // padding: 0 20px;
+  ${lmobile({ marginTop: "10px" })}
 `;
 const PriceCustomButton = styled.button`
   border: none;
@@ -339,9 +386,10 @@ const FilterCon = styled.div`
   // position:relative;
 `;
 const FilterWrapper = styled.div`
-  width: 380px;
-  position:relative;
-  bottom:100px;
+  max-width: 380px;
+  min-width: 300px;
+  position: absolute;
+  top: 0;
 
   background: white;
   box-sizing: border-box;
@@ -359,7 +407,7 @@ const FilterLocationCon = styled.div`
   margin: 10px 0;
 `;
 const FilterLocation = styled.div`
-padding:10px 0;
+  padding: 10px 0;
 `;
 const FilterLocationText = styled.span`
   color: orangered;
@@ -373,7 +421,7 @@ const FilterConditionWrapper = styled.div`
 const FilterConditionCon = styled.div`
   background: whitesmoke;
   border-radius: 16px;
-  padding:6px;
+  padding: 6px;
 `;
 const FilterCondition = styled.div`
   border-radius: 16px;
@@ -387,7 +435,7 @@ const FilterConditionText = styled.span``;
 const FilterOptionsCon = styled.div`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  padding:5px 0;
+  padding: 5px 0;
 `;
 const FilterOptionsHeader = styled.div`
   padding: 6px 0;
@@ -396,7 +444,7 @@ const FilterOptionsHeaderIcon = styled.div``;
 const FilterOptionsHeaderText = styled.span`
   font-size: 15px;
   font-weight: 500;
-  color:grey;
+  color: grey;
 `;
 const FilterOptions = styled.div``;
 const FilterOptionsLabel = styled.div`
@@ -408,22 +456,170 @@ const FilterOptionsTextSwitch = styled.div``;
 
 const ProductsCon = styled.div``;
 function Inventory({ route }) {
- 
-  const [filter, setFilter] = useState({ show: false, filter: "" });
+  const [filter, setFilter] = useState();
   const [transmission, setTransmission] = useState("any");
   const [features, setFeatures] = useState("any");
+  const [sortOpen,setSortopen]=useState(false)
+  const [PriceOpen,setPriceopen]=useState(false)
   console.log(transmission);
 
-  useEffect(() => {
-    if (filter === !"") {
-      setFilter({ show: false });
-    }
-  }, [filter]);
+  // useEffect(() => {
+  //   if (filter === !"") {
+  //     setFilter({ show: false });
+  //   }
+  // }, [filter]);
+
+const BrandsFilterCon = () => (
+  <BrandsWrapper MobileEnabled={MobileEnabled} className="flex aife w100 jcfe">
+    <BrandsCon className="">
+      <BrandsAlphCon className="flex aic jcc fdc h100 ">
+        {alpha.map((item, i) => (
+          <BrandsAlph key={i}>
+            <BrandsAlphText>{item.text}</BrandsAlphText>
+          </BrandsAlph>
+        ))}
+      </BrandsAlphCon>
+      <BrandsHeader className="flex aic jcsb">
+        <BrandsHeaderIcon
+          className="flex aifs jcfs flex1"
+          onClick={() => (setRoute("home"), setFilter({ filter: "" }))}
+        >
+          <ChevronLeft />
+        </BrandsHeaderIcon>
+        <BrandsHeaderTextCon className="flex aifs jcfs flex2">
+          <BrandsHeaderText>Car Brand</BrandsHeaderText>
+        </BrandsHeaderTextCon>
+      </BrandsHeader>
+      <BrandsTrendConsHeader>
+        <BrandsTrendConHeaderTextCon>Trend Brand</BrandsTrendConHeaderTextCon>
+      </BrandsTrendConsHeader>
+      {/* <BrandsTrendCon className="flex aic jcsb wrap"> */}
+      <BrandsTrendCon>
+        {trendBrand.map((item, i) => (
+          <BrandsTrend className="flex aic jcc fdc flex1" key={i}>
+            <BrandsTrendImg src={require("../images/Toyota.png")} />
+            <BrandsTrendText>Toyota</BrandsTrendText>
+          </BrandsTrend>
+        ))}
+      </BrandsTrendCon>
+      <BrandsNameCon className="flex aifs jcc fdc w100">
+        <BrandsName className="flex aifs jcc fdc w100">
+          <BrandsNameHeading>All</BrandsNameHeading>
+          <BrandsNameText all>Choose All</BrandsNameText>
+        </BrandsName>
+        {data[0].map((item, i) => (
+          <BrandsName className="flex aifs jcc fdc w100" key={i}>
+            <BrandsNameHeading>A</BrandsNameHeading>
+            <BrandsNameText> Acura</BrandsNameText>
+            <BrandsNameText> Acura</BrandsNameText>
+            <BrandsNameText> Acura</BrandsNameText>
+            <BrandsNameText> Acura</BrandsNameText>
+            <BrandsNameText> Acura</BrandsNameText>
+          </BrandsName>
+        ))}
+      </BrandsNameCon>
+    </BrandsCon>
+  </BrandsWrapper>
+);
+
+const FilterComponent = () => (
+  <FilterCon className="flex aife jcfe w100">
+    <FilterWrapper>
+      <FilterHeader className=" flex aic jcsb">
+        <FilterHeaderIcon className="flex1 flex aifs jcfs ">
+          <ChevronLeft />
+        </FilterHeaderIcon>
+        <FilterHeaderTextCon className="flex1 flex aifs jcfs">
+          <FilterHeaderText>Filter</FilterHeaderText>
+        </FilterHeaderTextCon>
+      </FilterHeader>
+      <FilterLocationCon className="flex aic jcsb w100">
+        <FilterLocation className="flex aic jcc">
+          <PlaceOutlined sx={{ color: "grayText", fontSize: "19px" }} />
+          <FilterLocationText>Nigeria</FilterLocationText>
+        </FilterLocation>
+        <FilterLocationIcon>
+          <ChevronRight sx={{ color: "GrayText" }} />
+        </FilterLocationIcon>
+      </FilterLocationCon>
+      <FilterConditionWrapper className="flex bsbb aic jcc w100">
+        <FilterConditionCon className="flex aic jcsb w100">
+          <FilterCondition
+            onClick={() => setCondition("New")}
+            style={{
+              background: condition === "New" && "black",
+              color: condition === "New" && "white",
+            }}
+          >
+            <FilterConditionText>New</FilterConditionText>
+          </FilterCondition>
+          <FilterCondition
+            onClick={() => setCondition("Used")}
+            style={{
+              background: condition === "Used" && "black",
+              color: condition === "Used" && "white",
+            }}
+          >
+            <FilterConditionText>Used</FilterConditionText>
+          </FilterCondition>
+        </FilterConditionCon>
+      </FilterConditionWrapper>
+      <FormGroup>
+        {filterOptions.map((item, i) => (
+          <FilterOptionsCon>
+            <FilterOptionsHeader
+              onClick={() =>
+                setShow(show === item.Headername ? "" : item.Headername)
+              }
+              className="flex aic jcsb"
+            >
+              <FilterOptionsHeaderText>
+                {item.Headername}
+              </FilterOptionsHeaderText>
+              <FilterOptionsHeaderIcon className="flex aic jcc">
+                {show === item.Headername ? (
+                  <KeyboardArrowUp sx={{ fontSize: "17px" }} />
+                ) : (
+                  <KeyboardArrowDown sx={{ fontSize: "17px" }} />
+                )}
+              </FilterOptionsHeaderIcon>
+            </FilterOptionsHeader>
+            {show === item.Headername && (
+              <FilterOptions>
+                <FilterOptionsTextCon className="flex aic jcsb w100">
+                  <FilterOptionsText>
+                    {`All  ${item.Headername + "s"} `}
+                  </FilterOptionsText>
+                  <FilterOptionsTextSwitch>
+                    <Switch />
+                  </FilterOptionsTextSwitch>
+                </FilterOptionsTextCon>
+                <FilterOptionsLabel className="flex aifs jcc fdc">
+                  {item.options.map((item, i) => (
+                    <FormControlLabel
+                      onClick={() => setTransmission(item)}
+                      sx={{
+                        height: "30px",
+                        fontSize: "1px",
+                      }}
+                      control={<Checkbox />}
+                      label={item}
+                    />
+                  ))}
+                </FilterOptionsLabel>
+              </FilterOptions>
+            )}
+          </FilterOptionsCon>
+        ))}
+      </FormGroup>
+    </FilterWrapper>
+  </FilterCon>
+);
 
   const ShowFilter = (sort) => {
     setSort(sort);
     setTimeout(() => {
-      setFilter({ show: false });
+      setFilter("");
     }, 0);
   };
 
@@ -624,307 +820,208 @@ function Inventory({ route }) {
     },
   ];
 
+  const [Route, setRoute] = useState("home");
   const [sort, setSort] = useState("Sort");
-  const [showFilterSelect, setShowFilterSelect] = useState('');
+  const [showFilterSelect, setShowFilterSelect] = useState("");
   const [show, setShow] = useState("Transmision");
   const [brand, setBrand] = useState("Brand");
   const [price, setPrice] = useState("Price");
   const [condition, setCondition] = useState("New");
 
-    const [searchQuery, setSearchQuery] = useState("");
-    console.log(searchQuery)
+  const [searchQuery, setSearchQuery] = useState("");
+  console.log(searchQuery);
+const [width,setWidth]=useState(window.innerWidth);
+var MobileEnabled = false;
+useEffect(() => {
+    if(width<=350){
+MobileEnabled= true;
+    }else{
+      MobileEnabled=false;
+    }
+}, [width])
+
+
+  const handleClick = (prop) => {
+    if(!MobileEnabled){
+    if(prop==='Sort'){
+      setFilter( sortOpen ? '' : prop ) ;
+      setSortopen((current)=>!current)
+    }else if(prop==='Price'){
+            setFilter( sortOpen ? '' : prop ) ;
+      setPriceopen((current)=>!current)
+    }
+    }else{
+handleClick(prop)
+    }
+  }
+  // const width = window.innerWidth;
+  // alert(width)
 
 
   return (
-    <Container className="PP">
-      <MobileHeaderCon>
-        <MobileHeader bgt="scrollTrasparent" onscroll="blue" />
-      </MobileHeaderCon>
-      <HeaderCon className="flex aic jcc fdc w100">
-        <Header route={route} bg="black" header={true} />
-        <SortsCon className="flex aic wrap jcsb w100 bgw">
-          <SortsLeft id="SortsLeft" className="flex aic jcc ">
-            <SortsLeftIcon className="flex aic jcc cp">
-              <KeyboardArrowLeft
-                id="InventoryIconCaret"
-                sx={{ fontSize: "35px", fontWeight: 600 }}
-              />
-            </SortsLeftIcon>
-            <SortsInputCon className="flex aic jcfe">
-              <Search
-                id="InventoryIcon"
-                className="flex aic jcc"
-                sx={{ fontSize: "29px", margin: "0 6px" }}
-              />
-              <SortsInput
-                className="flex aic jcc s"
-                placeholder="Search For Cars You Like...."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </SortsInputCon>
-            <SortsLeftButton className="flex aic jcc">
-              <Link
-                to={`/inventory/search=${searchQuery}`}
-                className="link flex aic jcc w100"
-              >
-                Search
-              </Link>
-              {/* <Search/> */}
-            </SortsLeftButton>
-          </SortsLeft>
-          <SortsRight id="SortsRight" className="flex aic ">
-            <SortsRightSelect
-              onClick={() => setFilter({ show: true, filter: "Sort" })}
-              className="flex aic jcsb"
-            >
-              <SortsRightSelectText>{sort}</SortsRightSelectText>
-              <SortsRightSelectIcon className="flex aic jcc">
-                <ArrowDropDown />
-              </SortsRightSelectIcon>
-            </SortsRightSelect>
-            <SortsRightSelect
-              onClick={() => setFilter({ show: true, filter: "Brands" })}
-              className="flex aic jcc"
-            >
-              <SortsRightSelectText>{brand}</SortsRightSelectText>
-              <SortsRightSelectIcon className="flex aic jcc">
-                <ArrowDropDown />
-              </SortsRightSelectIcon>
-            </SortsRightSelect>
-            <SortsRightSelect
-              onClick={() => setFilter({ show: true, filter: "Price" })}
-              className="flex aic jcc"
-            >
-              <SortsRightSelectText>{price}</SortsRightSelectText>
-              <SortsRightSelectIcon className="flex aic jcc">
-                <ArrowDropDown />
-              </SortsRightSelectIcon>
-            </SortsRightSelect>
-            <Filter onClick={() => setFilter({ show: true, filter: "Filter" })}>
-              <FilterText className="flex aic jcc">
-                <Tune sx={{ fontSize: "18px", marginRight: "7px" }} /> Filters
-              </FilterText>
-            </Filter>
-          </SortsRight>
-        </SortsCon>
-      </HeaderCon>
-      <Wrapper className=" aifs jcfs fdc">
-        <FiltersWrapper>
-          {filter.show && (
-            <FiltersCon>
-              {filter.filter === "Sort" && (
-                <SortCon className="flex aife jcfe fdc">
-                  <SortWrapper>
-                    {data[0].map((item) => (
-                      <SortsTextCon onClick={() => ShowFilter(item.text)}>
-                        <SortsText>{item.text}</SortsText>
-                      </SortsTextCon>
-                    ))}
-                  </SortWrapper>
-                </SortCon>
-              )}
-              {filter.filter === "Brands" && (
-                <BrandsWrapper className="flex aife w100 jcfe">
-                  <BrandsCon className="">
-                    <BrandsAlphCon className="flex aic jcc fdc h100 ">
-                      {alpha.map((item, i) => (
-                        <BrandsAlph key={i}>
-                          <BrandsAlphText>{item.text}</BrandsAlphText>
-                        </BrandsAlph>
-                      ))}
-                    </BrandsAlphCon>
-                    <BrandsHeader className="flex aic jcsb">
-                      <BrandsHeaderIcon className="flex aifs jcfs flex1">
-                        <ChevronLeft />
-                      </BrandsHeaderIcon>
-                      <BrandsHeaderTextCon className="flex aifs jcfs flex2">
-                        <BrandsHeaderText>Car Brand</BrandsHeaderText>
-                      </BrandsHeaderTextCon>
-                    </BrandsHeader>
-                    <BrandsTrendConsHeader>
-                      <BrandsTrendConHeaderTextCon>
-                        Trend Brand
-                      </BrandsTrendConHeaderTextCon>
-                    </BrandsTrendConsHeader>
-                    <BrandsTrendCon className="flex aic jcsb wrap">
-                      {trendBrand.map((item, i) => (
-                        <BrandsTrend className="flex aic jcc fdc flex1" key={i}>
-                          <BrandsTrendImg
-                            src={require("../images/Toyota.png")}
-                          />
-                          <BrandsTrendText>Toyota</BrandsTrendText>
-                        </BrandsTrend>
-                      ))}
-                    </BrandsTrendCon>
-                    <BrandsNameCon className="flex aifs jcc fdc w100">
-                      <BrandsName className="flex aifs jcc fdc w100">
-                        <BrandsNameHeading>All</BrandsNameHeading>
-                        <BrandsNameText all>Choose All</BrandsNameText>
-                      </BrandsName>
-                      {data[0].map((item, i) => (
-                        <BrandsName className="flex aifs jcc fdc w100" key={i}>
-                          <BrandsNameHeading>A</BrandsNameHeading>
-                          <BrandsNameText> Acura</BrandsNameText>
-                          <BrandsNameText> Acura</BrandsNameText>
-                          <BrandsNameText> Acura</BrandsNameText>
-                          <BrandsNameText> Acura</BrandsNameText>
-                          <BrandsNameText> Acura</BrandsNameText>
-                        </BrandsName>
-                      ))}
-                    </BrandsNameCon>
-                  </BrandsCon>
-                </BrandsWrapper>
-              )}
-              {filter.filter === "Price" && (
-                <PriceCon className="flex aife jcfe">
-                  <PriceWrapper>
-                    <PricesWrapper className="flex aic jcc wrap">
-                      <Prices>
-                        <PricesText>Less $ 1,000,000</PricesText>
-                      </Prices>
-                      <Prices>
-                        <PricesText> $1,000,000 - $2,000,000</PricesText>
-                      </Prices>
-                      <Prices>
-                        <PricesText> $2,000,000- $3,000,000</PricesText>
-                      </Prices>
-                      <Prices>
-                        <PricesText> $3,000,000-$5,000,000</PricesText>
-                      </Prices>
-                      <Prices>
-                        <PricesText> $5,000,000-$8,000,000</PricesText>
-                      </Prices>
-                      <Prices>
-                        <PricesText>Above $8,000,000</PricesText>
-                      </Prices>
-                    </PricesWrapper>
-                    <PriceCustom>
-                      <PriceCustomHeader>
-                        <PriceCustomHeaderText>
-                          Custom Price($)
-                        </PriceCustomHeaderText>
-                      </PriceCustomHeader>
-                      <PriceCustomInputWrapper className="flex aic jcsb wrap">
-                        <PriceCustomInputCon>
-                          <PriceCustomInput placeholder="Min" />
-                        </PriceCustomInputCon>
-                        <PriceCustomText>to</PriceCustomText>
-                        <PriceCustomInputCon>
-                          <PriceCustomInput placeholder="Max" />
-                        </PriceCustomInputCon>
-                      </PriceCustomInputWrapper>
-                    </PriceCustom>
-                    <PriceCustomButtonCon className="flex aic jcc bsbb w100">
-                      <PriceCustomButton>Apply</PriceCustomButton>
-                    </PriceCustomButtonCon>
-                  </PriceWrapper>
-                </PriceCon>
-              )}
-              {filter.filter === "Filter" && (
-                <FilterCon className="flex aife jcfe w100">
-                  <FilterWrapper>
-                    <FilterHeader className=" flex aic jcsb">
-                      <FilterHeaderIcon className="flex1 flex aifs jcfs">
-                        <ChevronLeft />
-                      </FilterHeaderIcon>
-                      <FilterHeaderTextCon className="flex1 flex aifs jcfs">
-                        <FilterHeaderText>Filter</FilterHeaderText>
-                      </FilterHeaderTextCon>
-                    </FilterHeader>
-                    <FilterLocationCon className="flex aic jcsb w100">
-                      <FilterLocation className="flex aic jcc">
-                        <PlaceOutlined
-                          sx={{ color: "grayText", fontSize: "19px" }}
-                        />
-                        <FilterLocationText>Nigeria</FilterLocationText>
-                      </FilterLocation>
-                      <FilterLocationIcon>
-                        <ChevronRight sx={{ color: "GrayText" }} />
-                      </FilterLocationIcon>
-                    </FilterLocationCon>
-                    <FilterConditionWrapper className="flex bsbb aic jcc w100">
-                      <FilterConditionCon className="flex aic jcsb w100">
-                        <FilterCondition
-                          onClick={() => setCondition("New")}
-                          style={{
-                            background: condition === "New" && "black",
-                            color: condition === "New" && "white",
-                          }}
-                        >
-                          <FilterConditionText>New</FilterConditionText>
-                        </FilterCondition>
-                        <FilterCondition
-                          onClick={() => setCondition("Used")}
-                          style={{
-                            background: condition === "Used" && "black",
-                            color: condition === "Used" && "white",
-                          }}
-                        >
-                          <FilterConditionText>Used</FilterConditionText>
-                        </FilterCondition>
-                      </FilterConditionCon>
-                    </FilterConditionWrapper>
-                    <FormGroup>
-                      {filterOptions.map((item, i) => (
-                        <FilterOptionsCon>
-                          <FilterOptionsHeader
-                            onClick={() =>
-                              setShow(
-                                show === item.Headername ? "" : item.Headername
-                              )
-                            }
-                            className="flex aic jcsb"
-                          >
-                            <FilterOptionsHeaderText>
-                              {item.Headername}
-                            </FilterOptionsHeaderText>
-                            <FilterOptionsHeaderIcon className="flex aic jcc">
-                              {show === item.Headername ? (
-                                <KeyboardArrowUp sx={{ fontSize: "17px" }} />
-                              ) : (
-                                <KeyboardArrowDown sx={{ fontSize: "17px" }} />
-                              )}
-                            </FilterOptionsHeaderIcon>
-                          </FilterOptionsHeader>
-                          {show === item.Headername && (
-                            <FilterOptions>
-                              <FilterOptionsTextCon className="flex aic jcsb w100">
-                                <FilterOptionsText>
-                                  {`All  ${item.Headername + "s"} `}
-                                </FilterOptionsText>
-                                <FilterOptionsTextSwitch>
-                                  <Switch />
-                                </FilterOptionsTextSwitch>
-                              </FilterOptionsTextCon>
-                              <FilterOptionsLabel className="flex aifs jcc fdc">
-                                {item.options.map((item, i) => (
-                                  <FormControlLabel
-                                    onClick={() => setTransmission(item)}
-                                    sx={{ height: "30px", fontSize: "1px" }}
-                                    control={<Checkbox />}
-                                    label={item}
-                                  />
-                                ))}
-                              </FilterOptionsLabel>
-                            </FilterOptions>
-                          )}
-                        </FilterOptionsCon>
-                      ))}
-                    </FormGroup>
-                  </FilterWrapper>
-                </FilterCon>
-              )}
-            </FiltersCon>
-          )}
-        </FiltersWrapper>
+    <Container className="">
+      {Route === "Brands" && <BrandsFilterCon />}
+      {Route === "Filters" && <FilterComponent />}
+      {Route === "home" && (
+        <>
+          <MobileHeaderCon>
+            <MobileHeader bgt="scrollTrasparent" onscroll="blue" />
+          </MobileHeaderCon>
+          <>
+            <HeaderWrapper>
+              <Header route={route} bg="black" header={true} />
+            </HeaderWrapper>
+            <>
+              <HeaderCon className="flex aic jcc fdc w100">
+                <SortsCon className="flex aic wrap jcsb w100 bgw">
+                  <SortsLeft id="SortsLeft" className="flex aic jcc ">
+                    <SortsLeftIcon className="flex aic jcc cp">
+                      <KeyboardArrowLeft
+                        id="InventoryIconCaret"
+                        sx={{ fontSize: "35px", fontWeight: 600 }}
+                      />
+                    </SortsLeftIcon>
+                    <SortsInputCon className="flex aic jcfe">
+                      <Search
+                        id="InventoryIcon"
+                        className="flex aic jcc"
+                        sx={{ fontSize: "29px", margin: "0 6px" }}
+                      />
+                      <SortsInput
+                        className="flex aic jcc s"
+                        placeholder="Search For Cars You Like...."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                      />
+                    </SortsInputCon>
+                    <SortsLeftButton className="flex aic jcc">
+                      <Link
+                        to={`/inventory/search=${searchQuery}`}
+                        className="link flex aic jcc w100"
+                      >
+                        Search
+                      </Link>
+                      {/* <Search/> */}
+                    </SortsLeftButton>
+                  </SortsLeft>
+                  <SortsRight id="inventoryFilters" className="flex aic w100">
+                    <SortsRightSelect
+                      onClick={() => handleClick("Sort")}
+                      className="flex aic jcsb"
+                    >
+                      <SortsRightSelectText>{sort}</SortsRightSelectText>
+                      <SortsRightSelectIcon className="flex aic jcc">
+                        <ArrowDropDown />
+                      </SortsRightSelectIcon>
+                    </SortsRightSelect>
+                    <SortsRightSelect
+                      onClick={() => setRoute("Brands")}
+                      className="flex aic jcc"
+                    >
+                      <SortsRightSelectText>{brand}</SortsRightSelectText>
+                      <SortsRightSelectIcon className="flex aic jcc">
+                        <ArrowDropDown />
+                      </SortsRightSelectIcon>
+                    </SortsRightSelect>
+                    <SortsRightSelect
+                      onClick={() => handleClick("Price")}
+                      className="flex aic jcc"
+                    >
+                      <SortsRightSelectText>{price}</SortsRightSelectText>
+                      <SortsRightSelectIcon className="flex aic jcc">
+                        <ArrowDropDown />
+                      </SortsRightSelectIcon>
+                    </SortsRightSelect>
+                    <Filter
+                      className="flex aic jcc"
+                      onClick={() => setRoute("Filters")}
+                    >
+                      <FilterText className="flex aic jcc">
+                        <Tune sx={{ fontSize: "18px", marginRight: "7px" }} />
+                        Filters
+                      </FilterText>
+                    </Filter>
+                  </SortsRight>
+                </SortsCon>
+              </HeaderCon>
+              <Wrapper className=" aifs jcfs fdc">
+                <FiltersWrapper>
+                  {/* {filter.show && ( */}
+                  <FiltersCon className="flex aic jcfe w100 ">
+                    {filter === "Sort" && (
+                      <SortCon className="flex aife jcfe fdc v">
+                        <SortWrapper>
+                          {data[0].map((item) => (
+                            <SortsTextCon onClick={() => ShowFilter(item.text)}>
+                              <SortsText>{item.text}</SortsText>
+                            </SortsTextCon>
+                          ))}
+                        </SortWrapper>
+                      </SortCon>
+                    )}
 
-        <ProductsCon>
-          <Products />
-        </ProductsCon>
-      </Wrapper>
-      <MobileBottom />
-      <Footer />
+                    {filter === "Price" && (
+                      <PriceCon className="flex aife jcfe">
+                        <PriceWrapper>
+                          <PricesWrapper className=" aic jcc wrap">
+                            <Prices>
+                              <PricesText>Less $ 1,000,000</PricesText>
+                            </Prices>
+                            <Prices>
+                              <PricesText> $1,000,000 - $2,000,000</PricesText>
+                            </Prices>
+                            <Prices>
+                              <PricesText> $2,000,000- $3,000,000</PricesText>
+                            </Prices>
+                            <Prices>
+                              <PricesText> $3,000,000-$5,000,000</PricesText>
+                            </Prices>
+                            <Prices>
+                              <PricesText> $5,000,000-$8,000,000</PricesText>
+                            </Prices>
+                            <Prices>
+                              <PricesText>Above $8,000,000</PricesText>
+                            </Prices>
+                          </PricesWrapper>
+                          <PriceCustom>
+                            <PriceCustomHeader>
+                              <PriceCustomHeaderText>
+                                Custom Price($)
+                              </PriceCustomHeaderText>
+                            </PriceCustomHeader>
+                            <PriceCustomInputWrapper className="flex aic jcsb ">
+                              <PriceCustomInputCon>
+                                <PriceCustomInput placeholder="Min" />
+                              </PriceCustomInputCon>
+                              <PriceCustomText>to</PriceCustomText>
+                              <PriceCustomInputCon>
+                                <PriceCustomInput placeholder="Max" />
+                              </PriceCustomInputCon>
+                            </PriceCustomInputWrapper>
+                          </PriceCustom>
+                          <PriceCustomButtonCon className="flex aic jcc bsbb w100">
+                            <PriceCustomButton>Apply</PriceCustomButton>
+                          </PriceCustomButtonCon>
+                        </PriceWrapper>
+                      </PriceCon>
+                    )}
+                    {filter === "Brands" && <BrandsFilterCon />}
+                    {filter === "Filters" && (
+                      <FilterComponent/>
+                    )}
+                  </FiltersCon>
+                  {/* )} */}
+                </FiltersWrapper>
+
+                <ProductsCon>
+                  <Products backdrop={filter} />
+                </ProductsCon>
+              </Wrapper>
+            </>
+          </>
+          <Footer />
+        </>
+      )}
     </Container>
   );
 }

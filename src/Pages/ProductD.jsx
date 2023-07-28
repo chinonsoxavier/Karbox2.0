@@ -181,7 +181,7 @@ function ProductD() {
  
   return (
     <ProductDCon className="flex aic jcc fdc w100">
-      {showImageGalery ? (
+      {/* {showImageGalery ? (
         <ImageSliderCon className="flex aic jcc fdc">
           <ButtonWrapper className="flex aic jcsb w100 ">
             <ButtonCon
@@ -236,7 +236,7 @@ function ProductD() {
           </ImageSliderIndexCon>
         </ImageSliderCon>
       ) : (
-        <>
+        <> */}
           <MobileBottom />
           <HeaderCon>
             <MobileHeader />
@@ -249,13 +249,13 @@ function ProductD() {
               setMakeanoffer={setMakeanoffer}
             />
             {/* <MakeOffer makeanoffer={makeanoffer} setMakeanoffer={setMakeanoffer} /> */}
-            <ProductDSelection />
+            {/* <ProductDSelection /> */}
           </Container>
           <FooterCon>
             <Footer />
           </FooterCon>
-        </>
-      )}
+        {/* </> */}
+      {/* // )} */}
     </ProductDCon>
   );
 }

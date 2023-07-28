@@ -2,13 +2,13 @@ import { AodOutlined, BorderColor, ChevronLeft, CopyrightOutlined, Diversity2Out
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
 const MenuContainer = styled.div`
-  background-color: white;
+  background-color: red;
   position: fixed;
   overflow-y:scroll;
   overflow-x:hidden;
-  width: 70vw;
+  width: 85vw;
   right:0;
-  z-index:300;
+  z-index:999;
   height: 100vh;
   top: 0;
   color: #42597a;

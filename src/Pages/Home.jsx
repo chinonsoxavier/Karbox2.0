@@ -50,10 +50,6 @@ const HomeContainer = styled.div``
 const Wrapper = styled.div``;
 const FooterCon = styled.div`
     box-sizing:border-box;
-  background: url(./footer-bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; 
   height: auto;
 `;
 function Home({ route,menu,setMenu }) {
@@ -61,7 +57,7 @@ function Home({ route,menu,setMenu }) {
     <Container>
       <MobileHeaderCon>
             <MobileHeader menu={menu} setMenu={setMenu} />
-            <MobileBottom/>
+            {/* <MobileBottom/> */}
       </MobileHeaderCon>
         <HomeContainer>
 
@@ -71,7 +67,7 @@ function Home({ route,menu,setMenu }) {
           <HomeCon>
             <Wrapper>
               <HomeMenu />
-              <HomeMenuMessage />
+              {/* <HomeMenuMessage /> */}
               <Find/>
               <ShopType/>
               <Brands/>
@@ -80,9 +76,9 @@ function Home({ route,menu,setMenu }) {
               <ContactCard />
             </Wrapper>
           </HomeCon>
-          <FooterCon>
+          {/* <FooterCon> */}
             <Footer />
-          </FooterCon>
+          {/* </FooterCon> */}
         </HomeContainer>
       {/* ) */}
       {/* } */}

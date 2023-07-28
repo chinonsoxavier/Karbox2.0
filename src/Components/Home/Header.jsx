@@ -14,9 +14,10 @@ const Container = styled.div`
   z-index: 100;
   position: relative;
   background: ${(props) => props.bg};
-  ${Laptop({ padding: "0 4vh" })}
+  ${Laptop({ padding: "0 4vh" })};
   ${lmobile({ display: "none" })};
   transition: 1s linear;
+  z-index:999;
 `;
 const Wrapper = styled.div`
   position: sticky;

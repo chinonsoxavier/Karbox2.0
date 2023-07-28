@@ -10,12 +10,13 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div``;
 const Product = styled.div`
-  margin-top: 100px;
+  margin-top: 30px;
   ${tablet({ flexDirection: "column", alignItems: "flex-start" })};
   ${mobile({ alignItems: "flex-start" })};
 `;
 const ProductLeft = styled.div`
   margin-right: 60px;
+  flex:1;
 `;
 const ProductDetails = styled.div`
   color: white;
@@ -87,11 +88,15 @@ const Button = styled.button`
 
 const ProductRight = styled.div`
   margin-top:50px;
+  flex:3;
+  width:100%;
+  // background:red;
+  min-width:40vw;
 `;
 const ProductImage = styled.img`
   width: 100%;
-  max-width: 750px;
-  ${mobile({ width: "200px" })}
+  min-width:100%;
+  // max-width: 750px;
 `;
 
 const EngineDetailsCon = styled.div`

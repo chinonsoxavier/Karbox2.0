@@ -1,5 +1,6 @@
 import {
   ChevronLeft,
+  ChevronRight,
   FavoriteBorder,
   FileUploadOutlined,
 } from "@mui/icons-material";
@@ -255,15 +256,15 @@ const handleClick = (slide) => {
               <PagNumText>{slideLength}</PagNumText>
             </PagNumTextCon>
           </PagNum>
-          {/* <ImageSlider className="flex aic jcc">
+          <ImageSlider className="flex aic jcc">
             <ImageSliderImg
               src={require("../../images/Lexus-LCert_WSE-Homepage-Tile-750x750.jpeg")}
               alt=""
             />
-          </ImageSlider> */}
-          <Swiper/>
+          </ImageSlider>
+          {/* <Swiper/> */}
         </ImageSliderCon>
-        {/* <ImageSliderPagCon ref={ImgPagWrapRef} className="flex aic jcc ">
+        <ImageSliderPagCon ref={ImgPagWrapRef} className="flex aic jcc ">
           <ButtonCon className="flex aic jcsb w100">
             <Button onClick={handleClickLeft} className="flex aic jcc">
               <ChevronLeft />
@@ -293,7 +294,7 @@ const handleClick = (slide) => {
               ))}
             </ImageSliderPagWrapper>
           </div>
-        </ImageSliderPagCon> */}
+        </ImageSliderPagCon>
         <ProductInfoCon>
           {/* <ProductInfoLeftCon> */}
           <ProductInfo>
