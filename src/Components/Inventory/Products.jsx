@@ -9,8 +9,7 @@ position:relative;
 
 const ProductsCon = styled.div`
   box-sizing: border-box;
-  display: grid;
-  background: red;
+  display: grid; 
   padding: 0 30px;
   box-sizing:border-box;
   grid-template-columns: 24% 24% 24% 24%;
